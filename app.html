@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shirmon Bakery — Mini App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Красивый шрифт -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #ffe4c4, #fff7ec 40%, #f5f5f5 100%);
+      color: #222;
+      padding: 12px;
+    }
+
+    .app {
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .app-header {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: #777;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 6px;
+      background: #f5f5f5;
+      border-radius: 999px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 4px 9px;
+      font-size: 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .lang-btn.active {
+      background: #222;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      padding: 4px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      font-size: 12px;
+      padding: 6px 4px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: #777;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+    }
+
+    .tab-container {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 20px;
+      padding: 14px 12px 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    .tab-content {
+      display: none;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    /* Меню */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 8px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .card-desc {
+      font-size: 11px;
+      color: #777;
+      min-height: 28px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .price {
+      font-weight: 600;
+    }
+
+    .tag {
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #ffe7c2;
+      font-size: 10px;
+    }
+
+    .add-btn {
+      margin-top: 6px;
+      border: none;
+      border-radius: 999px;
+      padding: 6px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .add-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* О пекарне */
+    .about-text {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .about-highlight {
+      font-weight: 600;
+    }
+
+    /* Контакты */
+    .contact-item {
+      margin-bottom: 10px;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-value {
+      font-size: 13px;
+    }
+
+    .contact-value a {
+      color: #ff6b6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    .map-block {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 14px;
+      background: #f7f3ec;
+    }
+
+    .map-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .map-placeholder {
+      font-size: 11px;
+      color: #666;
+      background: #fff;
+      border-radius: 10px;
+      padding: 8px;
+      margin-bottom: 6px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .map-links a {
+      font-size: 11px;
+      color: #ff6b6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .map-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Корзина */
+    .cart-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 6px 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .cart-item-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-width: 70%;
+    }
+
+    .cart-item-name {
+      font-weight: 500;
+      font-size: 12px;
+    }
+
+    .cart-item-meta {
+      font-size: 11px;
+      color: #777;
+    }
+
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .qty-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: none;
+      background: #f1f1f1;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .cart-summary {
+      border-top: 1px solid #eee;
+      padding-top: 8px;
+      font-size: 13px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .cart-hint {
+      font-size: 11px;
+      color: #777;
+    }
+
+    .empty-cart {
+      font-size: 12px;
+      color: #888;
+    }
+
+    @media (max-width: 400px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <div>
+          <div class="brand-name">Shirmon Bakery</div>
+          <div class="brand-subtitle" id="header-subtitle"></div>
+        </div>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="uz">UZ</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="menu">
+        <span id="tab-label-menu"></span>
+      </button>
+      <button class="tab-btn" data-tab="about">
+        <span id="tab-label-about"></span>
+      </button>
+      <button class="tab-btn" data-tab="contacts">
+        <span id="tab-label-contacts"></span>
+      </button>
+      <button class="tab-btn" data-tab="cart">
+        <span id="tab-label-cart"></span>
+      </button>
+    </nav>
+
+    <main class="tab-container">
+      <!-- Меню -->
+      <section id="tab-menu" class="tab-content active">
+        <div class="section-title" id="menu-title"></div>
+        <div class="section-subtitle" id="menu-subtitle"></div>
+        <div id="menu-list" class="grid"></div>
+      </section>
+
+      <!-- О пекарне -->
+      <section id="tab-about" class="tab-content">
+        <div class="section-title" id="about-title"></div>
+        <p class="about-text" id="about-text-1"></p>
+        <p class="about-text" id="about-text-2"></p>
+      </section>
+
+      <!-- Контакты -->
+      <section id="tab-contacts" class="tab-content">
+        <div class="section-title" id="contacts-title"></div>
+
+        <div class="contact-item">
+          <div class="contact-label" id="contacts-address-label"></div>
+          <div class="contact-value">г. Санкт-Петербург, ул. Дыбенко 25, к1</div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-label" id="contacts-landmark-label"></div>
+          <div class="contact-value" id="contacts-landmark-value"></div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-label" id="contacts-phone-label"></div>
+          <div class="contact-value">
+            <a href="tel:+79681120054">+7 (968) 112-00-54</a>
+          </div>
+        </div>
+
+        <div class="map-block">
+          <div class="map-title" id="map-title"></div>
+          <div class="map-placeholder">
+            🗺
+            <span id="map-hint"></span>
+          </div>
+          <div class="map-links">
+            <a
+              href="https://yandex.ru/maps/2/saint-petersburg/house/ulitsa_dybenko_25k1/Z0kYcgBmTkwFQFtjfXVxdX5iZQ==/"
+              target="_blank"
+              rel="noopener"
+            >
+              Яндекс.Карты
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Корзина -->
+      <section id="tab-cart" class="tab-content">
+        <div class="section-title" id="cart-title"></div>
+        <div id="cart-list" class="cart-list"></div>
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span id="cart-total-label"></span>
+            <span id="cart-total-value">0 ₽</span>
+          </div>
+          <div class="cart-hint" id="cart-hint"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    let currentLang = "ru";
+    const cart = {};
+
+    const uiText = {
+      ru: {
+        headerSubtitle: "Узбекская выпечка из тандыра в Санкт-Петербурге",
+        tabs: {
+          menu: "Меню",
+          about: "О пекарне",
+          contacts: "Контакты",
+          cart: "Корзина",
+        },
+        sections: {
+          menuTitle: "Меню",
+          menuSubtitle: "Выберите изделия и добавьте в корзину",
+          aboutTitle: "О пекарне",
+          contactsTitle: "Контакты",
+          cartTitle: "Ваша корзина",
+        },
+        about: {
+          t1: "Shirmon Bakery — это семейная пекарня с узбекскими традициями. Мы готовим в тандыре и духовке, используем только свежие продукты и делаем выпечку так, как для своих.",
+          t2: "Вы можете заказать самсу и лепёшки с собой или перекусить на месте. Для постоянных гостей мы постепенно добавим акции и спецпредложения.",
+        },
+        contacts: {
+          addressLabel: "АДРЕС",
+          landmarkLabel: "ОРИЕНТИР",
+          landmarkValue:
+            "Рядом с метро «Улица Дыбенко», недалеко от торгового центра.",
+          phoneLabel: "ТЕЛЕФОН",
+          mapTitle: "Карта",
+          mapHint: "Нажмите на ссылку ниже, чтобы открыть карту и проложить маршрут.",
+        },
+        cart: {
+          empty: "Ваша корзина пуста. Добавьте изделия из меню.",
+          totalLabel: "Итого:",
+          hint: "Покажите этот экран продавцу или оформите заказ через Telegram.",
+          qty: "шт.",
+        },
+        buttons: {
+          addToCart: "В корзину",
+        },
+        units: {
+          weight: "г",
+          currency: "₽",
+        },
+      },
+      uz: {
+        headerSubtitle: "Sankt-Peterburgdagi tandir o‘zbek pishiriqlari",
+        tabs: {
+          menu: "Menyu",
+          about: "Nonxona",
+          contacts: "Kontaktlar",
+          cart: "Savat",
+        },
+        sections: {
+          menuTitle: "Menyu",
+          menuSubtitle: "Taomlarni tanlang va savatga qo‘shing",
+          aboutTitle: "Shirmon haqida",
+          contactsTitle: "Kontaktlar",
+          cartTitle: "Savat",
+        },
+        about: {
+          t1: "Shirmon Bakery — oila nonxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy o‘zbek pishiriqlari qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
+          t2: "Somsa va nonlarni o‘zingiz bilan olib ketishingiz yoki shu yerning o‘zida tamaddi qilishingiz mumkin. Doimiy mijozlar uchun aksiya va chegirmalar qo‘shamiz.",
+        },
+        contacts: {
+          addressLabel: "MANZIL",
+          landmarkLabel: "MO‘LJAL",
+          landmarkValue:
+            "“Ulitsa Dybenko” metro bekati yonida, savdo markaziga yaqin.",
+          phoneLabel: "TELEFON",
+          mapTitle: "Xarita",
+          mapHint: "Xaritani ochish va yo‘lni ko‘rish uchun pastdagi havolani bosing.",
+        },
+        cart: {
+          empty: "Savat bo‘sh. Menyudan taomlarni qo‘shing.",
+          totalLabel: "Jami:",
+          hint:
+            "Ushbu oynani sotuvchiga ko‘rsating yoki buyurtmani Telegram orqali yuboring.",
+          qty: "dona",
+        },
+        buttons: {
+          addToCart: "Savatga",
+        },
+        units: {
+          weight: "g",
+          currency: "₽",
+        },
+      },
+    };
+
+    const menuItems = [
+      {
+        id: 1,
+        slug: "lepyoshka-tandir",
+        image: "images/01-lepyoshka-tandir.jpg",
+        price: 45,
+        weight: 350,
+        ru: {
+          name: "Лепешка из тандыра",
+          desc: "Классическая узбекская лепешка на живых дрожжах, румяная и ароматная.",
+        },
+        uz: {
+          name: "Tandir noni",
+          desc: "Klassik o‘zbek tandir noni: yumshoq, xushbo‘y va yangi pishirilgan.",
+        },
+      },
+      {
+        id: 2,
+        slug: "samsa-tandir-beef",
+        image: "images/02-samsa-tandir-beef.jpg",
+        price: 110,
+        weight: 220,
+        ru: {
+          name: "Самса с говядиной из тандыра",
+          desc: "Сочная говядина, лук и специи, запечённые в тандыре до хрустящей корочки.",
+        },
+        uz: {
+          name: "Tandir mol go‘shtli somsa",
+          desc: "Sershov mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan.",
+        },
+      },
+      {
+        id: 3,
+        slug: "samsa-tandir-lamb",
+        image: "images/03-samsa-tandir-lamb.jpg",
+        price: 120,
+        weight: 220,
+        ru: {
+          name: "Самса с бараниной из тандыра",
+          desc: "Нежная баранина с курдюком, лук и восточные специи, приготовленные в тандыре.",
+        },
+        uz: {
+          name: "Tandir qo‘y go‘shtli somsa",
+          desc: "Yumshoq qo‘y go‘shti, dum yog‘i va piyoz bilan, tandirda haqiqiy sharq ta’mi.",
+        },
+      },
+      {
+        id: 4,
+        slug: "samsa-duxovka-beef",
+        image: "images/04-samsa-duxovka-beef.jpg",
+        price: 95,
+        weight: 180,
+        ru: {
+          name: "Самса с говядиной (духовочная)",
+          desc: "Аккуратные треугольные самсы с говядиной, выпеченные в духовке.",
+        },
+        uz: {
+          name: "Mol go‘shtli somsa (duxovkada)",
+          desc: "Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti va piyoz bilan.",
+        },
+      },
+      {
+        id: 5,
+        slug: "samsa-potato",
+        image: "images/05-samsa-potato.jpg",
+        price: 85,
+        weight: 180,
+        ru: {
+          name: "Самса с картошкой",
+          desc: "Домашняя самса с начинкой из картофеля и лука — простая и сытная.",
+        },
+        uz: {
+          name: "Kartoshkali somsa",
+          desc: "Kartoshka va piyozdan tayyorlangan soddaroq, lekin juda to‘yimli somsa.",
+        },
+      },
+      {
+        id: 6,
+        slug: "samsa-pumpkin",
+        image: "images/06-samsa-pumpkin.jpg",
+        price: 85,
+        weight: 180,
+        ru: {
+          name: "Самса с тыквой",
+          desc: "Сладковатая тыквенная начинка с лёгкими специями, идеальна к чаю.",
+        },
+        uz: {
+          name: "Qovoqli somsa",
+          desc: "Yengil shirinroq qovoq ichligi, yumshoq ziravorlar bilan — choy bilan ajoyib.",
+        },
+      },
+      {
+        id: 7,
+        slug: "lepyoshka-beef",
+        image: "images/07-lepyoshka-beef.jpg",
+        price: 110,
+        weight: 240,
+        ru: {
+          name: "Лепешка с говядиной из тандыра",
+          desc: "Сытная лепешка с рубленой говядиной и луком, запечённая в тандыре.",
+        },
+        uz: {
+          name: "Tandir mol go‘shtli non",
+          desc: "Rub kesilgan mol go‘shti va piyoz bilan to‘ldirilgan, tandirda pishirilgan non.",
+        },
+      },
+      {
+        id: 8,
+        slug: "lepyoshka-chicken",
+        image: "images/08-lepyoshka-chicken.jpg",
+        price: 110,
+        weight: 240,
+        ru: {
+          name: "Лепешка с курицей из тандыра",
+          desc: "Нежная куриная начинка в мягком тесте, запечённая в тандыре.",
+        },
+        uz: {
+          name: "Tandir tovuqli non",
+          desc: "Yumshoq tovuq go‘shti ichligi bilan tandirda pishirilgan mazali non.",
+        },
+      },
+      {
+        id: 9,
+        slug: "lepyoshka-assorti",
+        image: "images/09-lepyoshka-assorti.jpg",
+        price: 120,
+        weight: 260,
+        ru: {
+          name: "Лепешка ассорти",
+          desc: "Курица, сыр, болгарский перец и капуста — яркая начинка в одном изделии.",
+        },
+        uz: {
+          name: "Assorti non",
+          desc: "Tovuq go‘shti, pishloq, bulg‘or qalampiri va karam — barchasi bitta non ichida.",
+        },
+      },
+      {
+        id: 10,
+        slug: "sosiska-v-teste",
+        image: "images/10-sosiska-v-teste.jpg",
+        price: 75,
+        weight: 140,
+        ru: {
+          name: "Сосиска в тесте",
+          desc: "Золотистое тесто и сочная сосиска — любимая классика.",
+        },
+        uz: {
+          name: "Xamirli sosiska",
+          desc: "Tilladay qizarib pishgan xamir ichida shirali sosiska — bolalar sevimlisi.",
+        },
+      },
+      {
+        id: 11,
+        slug: "tomato-sauce-hot",
+        image: "images/11-sauce-tomato-hot.jpg",
+        price: 15,
+        weight: 30,
+        ru: {
+          name: "Соус томатный (острый)",
+          desc: "Острый томатный соус к самсе и лепёшкам.",
+        },
+        uz: {
+          name: "Achchiq tomat sousi",
+          desc: "Somsa va tandir nonlariga mos achchiq tomat sousi.",
+        },
+      },
+    ];
+
+    function getT() {
+      return uiText[currentLang];
+    }
+
+    function applyTranslations() {
+      const t = getT();
+      document.getElementById("header-subtitle").textContent = t.headerSubtitle;
+      document.getElementById("tab-label-menu").textContent = t.tabs.menu;
+      document.getElementById("tab-label-about").textContent = t.tabs.about;
+      document.getElementById("tab-label-contacts").textContent =
+        t.tabs.contacts;
+      document.getElementById("tab-label-cart").textContent = t.tabs.cart;
+
+      document.getElementById("menu-title").textContent =
+        t.sections.menuTitle;
+      document.getElementById("menu-subtitle").textContent =
+        t.sections.menuSubtitle;
+
+      document.getElementById("about-title").textContent =
+        t.sections.aboutTitle;
+      document.getElementById("about-text-1").textContent = t.about.t1;
+      document.getElementById("about-text-2").textContent = t.about.t2;
+
+      document.getElementById("contacts-title").textContent =
+        t.sections.contactsTitle;
+      document.getElementById("contacts-address-label").textContent =
+        t.contacts.addressLabel;
+      document.getElementById("contacts-landmark-label").textContent =
+        t.contacts.landmarkLabel;
+      document.getElementById("contacts-landmark-value").textContent =
+        t.contacts.landmarkValue;
+      document.getElementById("contacts-phone-label").textContent =
+        t.contacts.phoneLabel;
+      document.getElementById("map-title").textContent = t.contacts.mapTitle;
+      document.getElementById("map-hint").textContent = t.contacts.mapHint;
+
+      document.getElementById("cart-title").textContent =
+        t.sections.cartTitle;
+      document.getElementById("cart-total-label").textContent =
+        t.cart.totalLabel;
+      document.getElementById("cart-hint").textContent = t.cart.hint;
+
+      renderMenu();
+      renderCart();
+    }
+
+    function renderMenu() {
+      const t = getT();
+      const container = document.getElementById("menu-list");
+      container.innerHTML = "";
+
+      menuItems.forEach((item) => {
+        const langData = item[currentLang];
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.image}" alt="${langData.name}">
+          <div class="card-body">
+            <div class="card-title">${langData.name}</div>
+            <div class="card-desc">${langData.desc}</div>
+            <div class="card-footer">
+              <span class="price">${item.price} ${t.units.currency}</span>
+              <span class="tag">${item.weight} ${t.units.weight}</span>
+            </div>
+            <button class="add-btn" data-id="${item.id}">
+              + ${t.buttons.addToCart}
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".add-btn");
+        if (!btn) return;
+        const id = parseInt(btn.getAttribute("data-id"), 10);
+        addToCart(id);
+      }, { once: true });
+    }
+
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      renderCart();
+    }
+
+    function renderCart() {
+      const t = getT();
+      const listEl = document.getElementById("cart-list");
+      const totalEl = document.getElementById("cart-total-value");
+
+      listEl.innerHTML = "";
+      let total = 0;
+
+      const ids = Object.keys(cart);
+      if (ids.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty-cart";
+        empty.textContent = t.cart.empty;
+        listEl.appendChild(empty);
+        totalEl.textContent = `0 ${t.units.currency}`;
+        return;
+      }
+
+      ids.forEach((idStr) => {
+        const id = parseInt(idStr, 10);
+        const qty = cart[id];
+        const item = menuItems.find((it) => it.id === id);
+        if (!item) return;
+        const langData = item[currentLang];
+        const sum = item.price * qty;
+        total += sum;
+
+        const row = document.createElement("div");
+        row.className = "cart-item";
+        row.innerHTML = `
+          <div class="cart-item-info">
+            <div class="cart-item-name">${langData.name}</div>
+            <div class="cart-item-meta">${item.price} ${
+          t.units.currency
+        } × ${qty} ${t.cart.qty}</div>
+          </div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" data-id="${item.id}" data-delta="-1">-</button>
+            <span>${sum} ${t.units.currency}</span>
+            <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
+          </div>
+        `;
+        listEl.appendChild(row);
+      });
+
+      listEl.addEventListener("click", (e) => {
+        const btn = e.target.closest(".qty-btn");
+        if (!btn) return;
+        const id = parseInt(btn.getAttribute("data-id"), 10);
+        const delta = parseInt(btn.getAttribute("data-delta"), 10);
+        updateQty(id, delta);
+      }, { once: true });
+
+      totalEl.textContent = `${total} ${t.units.currency}`;
+    }
+
+    function updateQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id] += delta;
+      if (cart[id] <= 0) {
+        delete cart[id];
+      }
+      renderCart();
+    }
+
+    function setupTabs() {
+      const buttons = document.querySelectorAll(".tab-btn");
+      const contents = document.querySelectorAll(".tab-content");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tab = btn.getAttribute("data-tab");
+          buttons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          contents.forEach((c) => {
+            c.classList.toggle("active", c.id === `tab-${tab}`);
+          });
+        });
+      });
+    }
+
+    function setupLangButtons() {
+      const buttons = document.querySelectorAll(".lang-btn");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang");
+          currentLang = lang;
+          buttons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          applyTranslations();
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupTabs();
+      setupLangButtons();
+      applyTranslations();
+    });
+  </script>
+</body>
+</html>
