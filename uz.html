@@ -1,167 +1,285 @@
-export const menuItems = [
-  {
-    id: 1,
-    slug: "lepyoshka-tandir",
-    image: "images/01-lepyoshka-tandir.jpg",
-    price: 45,
-    weight: 350,
-    ru: {
-      name: "Лепешка из тандыра",
-      desc: "Классическая узбекская лепешка на живых дрожжах, румяная и ароматная."
-    },
-    uz: {
-      name: "Tandir noni",
-      desc: "Klassik o‘zbek tandir noni: yumshoq, xushbo‘y va yangi pishirilgan."
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shirmon Bakery — Menu (UZ)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-  },
-  {
-    id: 2,
-    slug: "samsa-tandir-beef",
-    image: "images/02-samsa-tandir-beef.jpg",
-    price: 110,
-    weight: 220,
-    ru: {
-      name: "Самса с говядиной из тандыра",
-      desc: "Сочная говядина, лук и специи, запечённые в тандыре до хрустящей корочки."
-    },
-    uz: {
-      name: "Tandir mol go‘shtli somsa",
-      desc: "Sershov mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan."
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+      padding: 20px;
     }
-  },
-  {
-    id: 3,
-    slug: "samsa-tandir-lamb",
-    image: "images/03-samsa-tandir-lamb.jpg",
-    price: 120,
-    weight: 220,
-    ru: {
-      name: "Самса с бараниной из тандыра",
-      desc: "Нежная баранина с курдюком, лук и восточные специи, приготовленные в тандыре."
-    },
-    uz: {
-      name: "Tandir qo‘y go‘shtli somsa",
-      desc: "Yumshoq qo‘y go‘shti, dum yog‘i va piyoz bilan, tandirda haqiqiy sharq ta’mi."
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
     }
-  },
-  {
-    id: 4,
-    slug: "samsa-duxovka-beef",
-    image: "images/04-samsa-duxovka-beef.jpg",
-    price: 95,
-    weight: 180,
-    ru: {
-      name: "Самса с говядиной (духовочная)",
-      desc: "Аккуратные треугольные самсы с говядиной, выпеченные в духовке."
-    },
-    uz: {
-      name: "Mol go‘shtli somsa (duxovkada)",
-      desc: "Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti va piyoz bilan."
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
     }
-  },
-  {
-    id: 5,
-    slug: "samsa-potato",
-    image: "images/05-samsa-potato.jpg",
-    price: 85,
-    weight: 180,
-    ru: {
-      name: "Самса с картошкой",
-      desc: "Домашняя самса с начинкой из картофеля и лука — простая и сытная."
-    },
-    uz: {
-      name: "Kartoshkali somsa",
-      desc: "Kartoshka va piyozdan tayyorlangan soddaroq, lekin juda to‘yimli somsa."
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
     }
-  },
-  {
-    id: 6,
-    slug: "samsa-pumpkin",
-    image: "images/06-samsa-pumpkin.jpg",
-    price: 85,
-    weight: 180,
-    ru: {
-      name: "Самса с тыквой",
-      desc: "Сладковатая тыквенная начинка с лёгкими специями, идеальна к чаю."
-    },
-    uz: {
-      name: "Qovoqli somsa",
-      desc: "Yengil shirinroq qovoq ichligi, yumshoq ziravorlar bilan — choy bilan ajoyib."
+
+    .subtitle {
+      font-size: 14px;
+      color: #777;
     }
-  },
-  {
-    id: 7,
-    slug: "lepyoshka-beef",
-    image: "images/07-lepyoshka-beef.jpg",
-    price: 110,
-    weight: 240,
-    ru: {
-      name: "Лепешка с говядиной из тандыра",
-      desc: "Сытная лепешка с рубленой говядиной и луком, запечённая в тандыре."
-    },
-    uz: {
-      name: "Tandir mol go‘shtli non",
-      desc: "Rub kesilgan mol go‘shti va piyoz bilan to‘ldirilgan, tandirda pishirilgan non."
+
+    .lang-switch {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #777;
     }
-  },
-  {
-    id: 8,
-    slug: "lepyoshka-chicken",
-    image: "images/08-lepyoshka-chicken.jpg",
-    price: 110,
-    weight: 240,
-    ru: {
-      name: "Лепешка с курицей из тандыра",
-      desc: "Нежная куриная начинка в мягком тесте, запечённая в тандыре."
-    },
-    uz: {
-      name: "Tandir tovuqli non",
-      desc: "Yumshoq tovuq go‘shti ichligi bilan tandirda pishirilgan mazali non."
+    .lang-switch a,
+    .lang-switch span {
+      color: inherit;
+      text-decoration: none;
+      margin: 0 4px;
     }
-  },
-  {
-    id: 9,
-    slug: "lepyoshka-assorti",
-    image: "images/09-lepyoshka-assorti.jpg",
-    price: 120,
-    weight: 260,
-    ru: {
-      name: "Лепешка ассорти",
-      desc: "Курица, сыр, болгарский перец и капуста — яркая начинка в одном изделии."
-    },
-    uz: {
-      name: "Assorti non",
-      desc: "Tovuq go‘shti, pishloq, bulg‘or qalampiri va karam — barchasi bitta non ichida."
+    .lang-switch .active {
+      font-weight: 600;
+      text-decoration: underline;
     }
-  },
-  {
-    id: 10,
-    slug: "sosiska-v-teste",
-    image: "images/10-sosiska-v-teste.jpg",
-    price: 75,
-    weight: 140,
-    ru: {
-      name: "Сосиска в тесте",
-      desc: "Золотистое тесто и сочная сосиска — любимая классика."
-    },
-    uz: {
-      name: "Xamirli sosiska",
-      desc: "Tilladay qizarib pishgan xamir ichida shirali sosiska — bolalar sevimlisi."
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
-  },
-  {
-    id: 11,
-    slug: "tomato-sauce-hot",
-    image: "images/11-sauce-tomato-hot.jpg",
-    price: 15,
-    weight: 30,
-    ru: {
-      name: "Соус томатный (острый)",
-      desc: "Острый томатный соус к самсе и лепёшкам."
-    },
-    uz: {
-      name: "Achchiq tomat sousi",
-      desc: "Somsa va tandir nonlariga mos achchiq tomat sousi."
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
     }
-  }
-];
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #666;
+      min-height: 32px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
+    .price {
+      font-weight: 600;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #ffe7c2;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Shirmon Bakery</h1>
+      <div class="subtitle">Sankt-Peterburgdagi tandir o‘zbek non va pishiriqlari</div>
+      <div class="lang-switch">
+        <a href="index.html">RU</a> | <span class="active">UZ</span>
+      </div>
+    </header>
+
+    <section class="grid">
+
+      <!-- 1. Tandir noni -->
+      <article class="card">
+        <img src="images/01-lepyoshka-tandir.jpg" alt="Tandir noni">
+        <div class="card-body">
+          <div class="card-title">Tandir noni</div>
+          <div class="card-desc">Klassik o‘zbek tandir noni: yumshoq, xushbo‘y va yangi pishirilgan.</div>
+          <div class="card-footer">
+            <span class="price">45 ₽</span>
+            <span class="tag">350 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Tandir mol go‘shtli somsa -->
+      <article class="card">
+        <img src="images/02-samsa-tandir-beef.jpg" alt="Tandir mol go‘shtli somsa">
+        <div class="card-body">
+          <div class="card-title">Tandir mol go‘shtli somsa</div>
+          <div class="card-desc">Sershov mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan.</div>
+          <div class="card-footer">
+            <span class="price">110 ₽</span>
+            <span class="tag">220 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Tandir qo‘y go‘shtli somsa -->
+      <article class="card">
+        <img src="images/03-samsa-tandir-lamb.jpg" alt="Tandir qo‘y go‘shtli somsa">
+        <div class="card-body">
+          <div class="card-title">Tandir qo‘y go‘shtli somsa</div>
+          <div class="card-desc">Yumshoq qo‘y go‘shti, dum yog‘i va piyoz bilan, tandirda haqiqiy sharq ta’mi.</div>
+          <div class="card-footer">
+            <span class="price">120 ₽</span>
+            <span class="tag">220 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Mol go‘shtli somsa (duxovkada) -->
+      <article class="card">
+        <img src="images/04-samsa-duxovka-beef.jpg" alt="Mol go‘shtli somsa (duxovkada)">
+        <div class="card-body">
+          <div class="card-title">Mol go‘shtli somsa (duxovkada)</div>
+          <div class="card-desc">Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti va piyoz bilan.</div>
+          <div class="card-footer">
+            <span class="price">95 ₽</span>
+            <span class="tag">180 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. Kartoshkali somsa -->
+      <article class="card">
+        <img src="images/05-samsa-potato.jpg" alt="Kartoshkali somsa">
+        <div class="card-body">
+          <div class="card-title">Kartoshkali somsa</div>
+          <div class="card-desc">Kartoshka va piyozdan tayyorlangan soddaroq, lekin juda to‘yimli somsa.</div>
+          <div class="card-footer">
+            <span class="price">85 ₽</span>
+            <span class="tag">180 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Qovoqli somsa -->
+      <article class="card">
+        <img src="images/06-samsa-pumpkin.jpg" alt="Qovoqli somsa">
+        <div class="card-body">
+          <div class="card-title">Qovoqli somsa</div>
+          <div class="card-desc">Yengil shirinroq qovoq ichligi, yumshoq ziravorlar bilan — choy bilan ajoyib.</div>
+          <div class="card-footer">
+            <span class="price">85 ₽</span>
+            <span class="tag">180 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. Tandir mol go‘shtli non -->
+      <article class="card">
+        <img src="images/07-lepyoshka-beef.jpg" alt="Tandir mol go‘shtli non">
+        <div class="card-body">
+          <div class="card-title">Tandir mol go‘shtli non</div>
+          <div class="card-desc">Rub- rub kesilgan mol go‘shti va piyoz bilan to‘ldirilgan, tandirda pishirilgan non.</div>
+          <div class="card-footer">
+            <span class="price">110 ₽</span>
+            <span class="tag">240 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. Tandir tovuqli non -->
+      <article class="card">
+        <img src="images/08-lepyoshka-chicken.jpg" alt="Tandir tovuqli non">
+        <div class="card-body">
+          <div class="card-title">Tandir tovuqli non</div>
+          <div class="card-desc">Yumshoq tovuq go‘shti ichligi bilan tandirda pishirilgan mazali non.</div>
+          <div class="card-footer">
+            <span class="price">110 ₽</span>
+            <span class="tag">240 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9. Assorti non -->
+      <article class="card">
+        <img src="images/09-lepyoshka-assorti.jpg" alt="Assorti non">
+        <div class="card-body">
+          <div class="card-title">Assorti non</div>
+          <div class="card-desc">Tovuq go‘shti, pishloq, bulg‘or qalampiri va karam — barchasi bitta non ichida.</div>
+          <div class="card-footer">
+            <span class="price">120 ₽</span>
+            <span class="tag">260 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10. Xamirli sosiska -->
+      <article class="card">
+        <img src="images/10-sosiska-v-teste.jpg" alt="Xamirli sosiska">
+        <div class="card-body">
+          <div class="card-title">Xamirli sosiska</div>
+          <div class="card-desc">Tilladay qizarib pishgan xamir ichida shirali sosiska — bolalar sevimlisi.</div>
+          <div class="card-footer">
+            <span class="price">75 ₽</span>
+            <span class="tag">140 g</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 11. Achchiq tomat sousi -->
+      <article class="card">
+        <img src="images/11-sauce-tomato-hot.jpg" alt="Achchiq tomat sousi">
+        <div class="card-body">
+          <div class="card-title">Achchiq tomat sousi</div>
+          <div class="card-desc">Somsa va tandir nonlariga mos achchiq tomat sousi.</div>
+          <div class="card-footer">
+            <span class="price">15 ₽</span>
+            <span class="tag">30 g</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </div>
+</body>
+</html>
