@@ -15,10 +15,14 @@
 
   <style>
     :root {
-      --brand-yellow: #f7c933;
-      --brand-yellow-soft: #ffe98d;
-      --brand-burgundy: #7b1726;
-      --brand-burgundy-dark: #5a0f1b;
+      /* оттенки жёлтого как в лого */
+      --yellow-main: #f7c933;
+      --yellow-light: #ffe58a;
+      --yellow-soft: #fff0a6;
+      --yellow-deep: #f4b816;
+
+      --burgundy: #7b1726;
+      --burgundy-dark: #5a0f1b;
     }
 
     * {
@@ -27,16 +31,16 @@
       padding: 0;
     }
 
-    /* ВНЕШНИЙ ФОН — тёмный */
+    /* ВНЕШНИЙ ФОН — СЕРЫЙ */
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: #111111;
-      color: var(--brand-burgundy-dark);
+      background: #d4d4d4;
+      color: var(--burgundy-dark);
       padding: 12px;
     }
 
-    /* ВНУТРЕННИЙ БЛОК — жёлтый */
+    /* ВНУТРЕННИЙ БЛОК — ЖЁЛТЫЙ */
     .app {
       max-width: 520px;
       margin: 0 auto;
@@ -44,22 +48,22 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: var(--brand-yellow);
+      background: var(--yellow-main);
       border-radius: 24px;
       padding: 12px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.2);
     }
 
     .app-header {
-      background: var(--brand-yellow-soft);
+      background: var(--yellow-soft);
       border-radius: 18px;
       padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
-      border: 1px solid rgba(90, 15, 27, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(90, 15, 27, 0.35);
     }
 
     .brand {
@@ -68,35 +72,35 @@
       gap: 10px;
     }
 
-    /* ЛОГО — берём файл images/shirmon-logo.png */
+    /* ЛОГО: файл images/shirmon-logo.png */
     .logo-img {
       width: 42px;
       height: 42px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      background: #ffd65f;
+      background: var(--yellow-deep);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     .brand-name {
       font-weight: 700;
       font-size: 18px;
       letter-spacing: 0.5px;
-      color: var(--brand-burgundy);
+      color: var(--burgundy);
     }
 
     .brand-subtitle {
       font-size: 11px;
-      color: rgba(90, 15, 27, 0.85);
+      color: rgba(90, 15, 27, 0.9);
     }
 
     .lang-toggle {
       display: flex;
       gap: 6px;
-      background: #ffe89a;
+      background: var(--yellow-light);
       border-radius: 999px;
       padding: 3px;
-      border: 1px solid rgba(123, 23, 38, 0.35);
+      border: 1px solid rgba(123, 23, 38, 0.4);
     }
 
     .lang-btn {
@@ -106,12 +110,12 @@
       font-size: 11px;
       border-radius: 999px;
       cursor: pointer;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .lang-btn.active {
-      background: var(--brand-burgundy);
-      color: #fff;
+      background: var(--burgundy);
+      color: #ffffff;
       font-weight: 600;
     }
 
@@ -119,11 +123,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
-      background: var(--brand-yellow-soft);
+      background: var(--yellow-soft);
       border-radius: 999px;
       padding: 4px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-      border: 1px solid rgba(123, 23, 38, 0.2);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(123, 23, 38, 0.35);
     }
 
     .tab-btn {
@@ -133,24 +137,24 @@
       padding: 6px 4px;
       border-radius: 999px;
       cursor: pointer;
-      color: rgba(90, 15, 27, 0.9);
+      color: rgba(90, 15, 27, 0.95);
       font-weight: 500;
       white-space: nowrap;
     }
 
     .tab-btn.active {
-      background: var(--brand-burgundy);
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(90, 15, 27, 0.6);
+      background: var(--burgundy);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(90, 15, 27, 0.7);
     }
 
     .tab-container {
       flex: 1;
-      background: var(--brand-yellow-soft);
+      background: var(--yellow-soft);
       border-radius: 20px;
       padding: 14px 12px 18px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-      border: 1px solid rgba(123, 23, 38, 0.25);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(123, 23, 38, 0.4);
       overflow: hidden;
     }
 
@@ -169,16 +173,16 @@
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 10px;
-      color: var(--brand-burgundy);
+      color: var(--burgundy);
     }
 
     .section-subtitle {
       font-size: 12px;
-      color: rgba(90, 15, 27, 0.9);
+      color: rgba(90, 15, 27, 0.95);
       margin-bottom: 14px;
     }
 
-    /* Меню */
+    /* МЕНЮ */
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -187,13 +191,13 @@
     }
 
     .card {
-      background: #ffffff;
+      background: var(--yellow-light);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(123, 23, 38, 0.18);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(123, 23, 38, 0.4);
     }
 
     .card img {
@@ -213,12 +217,12 @@
     .card-title {
       font-weight: 600;
       font-size: 13px;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .card-desc {
       font-size: 11px;
-      color: rgba(90, 15, 27, 0.85);
+      color: rgba(90, 15, 27, 0.95);
       min-height: 28px;
     }
 
@@ -232,16 +236,16 @@
 
     .price {
       font-weight: 600;
-      color: var(--brand-burgundy);
+      color: var(--burgundy);
     }
 
     .tag {
       padding: 2px 7px;
       border-radius: 999px;
-      background: #ffe89a;
+      background: var(--yellow-soft);
       font-size: 10px;
-      color: var(--brand-burgundy-dark);
-      border: 1px solid rgba(123, 23, 38, 0.25);
+      color: var(--burgundy-dark);
+      border: 1px solid rgba(123, 23, 38, 0.4);
     }
 
     .add-btn {
@@ -252,36 +256,36 @@
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      background: linear-gradient(135deg, var(--brand-burgundy-dark), var(--brand-burgundy));
-      color: #fff;
+      background: linear-gradient(135deg, var(--burgundy-dark), var(--burgundy));
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
-      box-shadow: 0 4px 10px rgba(90, 15, 27, 0.7);
+      box-shadow: 0 4px 10px rgba(90, 15, 27, 0.8);
     }
 
     .add-btn:active {
       transform: translateY(1px);
-      box-shadow: 0 2px 6px rgba(90, 15, 27, 0.8);
+      box-shadow: 0 2px 6px rgba(90, 15, 27, 0.9);
     }
 
-    /* О пекарне */
+    /* О ПЕКАРНЕ */
     .about-text {
       font-size: 13px;
-      color: rgba(90, 15, 27, 0.95);
+      color: rgba(90, 15, 27, 0.98);
       margin-bottom: 10px;
       line-height: 1.5;
     }
 
-    /* Контакты */
+    /* КОНТАКТЫ */
     .contact-item {
       margin-bottom: 10px;
     }
 
     .contact-label {
       font-size: 11px;
-      color: rgba(90, 15, 27, 0.85);
+      color: rgba(90, 15, 27, 0.95);
       margin-bottom: 2px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -289,11 +293,11 @@
 
     .contact-value {
       font-size: 13px;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .contact-value a {
-      color: var(--brand-burgundy);
+      color: var(--burgundy);
       text-decoration: none;
       font-weight: 600;
     }
@@ -306,21 +310,21 @@
       margin-top: 12px;
       padding: 10px;
       border-radius: 14px;
-      background: #ffe89a;
-      border: 1px solid rgba(123, 23, 38, 0.3);
+      background: var(--yellow-light);
+      border: 1px solid rgba(123, 23, 38, 0.5);
     }
 
     .map-title {
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 6px;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .map-placeholder {
       font-size: 11px;
-      color: rgba(90, 15, 27, 0.95);
-      background: #fffdf0;
+      color: rgba(90, 15, 27, 0.98);
+      background: var(--yellow-soft);
       border-radius: 10px;
       padding: 8px;
       margin-bottom: 6px;
@@ -331,7 +335,7 @@
 
     .map-links a {
       font-size: 11px;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
       text-decoration: none;
       font-weight: 600;
     }
@@ -340,7 +344,7 @@
       text-decoration: underline;
     }
 
-    /* Корзина */
+    /* КОРЗИНА */
     .cart-list {
       display: flex;
       flex-direction: column;
@@ -353,11 +357,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #ffffff;
+      background: var(--yellow-light);
       border-radius: 12px;
       padding: 6px 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(123, 23, 38, 0.2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(123, 23, 38, 0.45);
     }
 
     .cart-item-info {
@@ -370,12 +374,12 @@
     .cart-item-name {
       font-weight: 500;
       font-size: 12px;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .cart-item-meta {
       font-size: 11px;
-      color: rgba(90, 15, 27, 0.85);
+      color: rgba(90, 15, 27, 0.95);
     }
 
     .cart-item-qty {
@@ -383,7 +387,7 @@
       align-items: center;
       gap: 4px;
       font-size: 12px;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .qty-btn {
@@ -391,16 +395,16 @@
       height: 20px;
       border-radius: 999px;
       border: none;
-      background: #ffe89a;
+      background: var(--yellow-soft);
       cursor: pointer;
       font-size: 14px;
       line-height: 1;
-      color: var(--brand-burgundy-dark);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      color: var(--burgundy-dark);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     }
 
     .cart-summary {
-      border-top: 1px solid rgba(123, 23, 38, 0.25);
+      border-top: 1px solid rgba(123, 23, 38, 0.45);
       padding-top: 8px;
       font-size: 13px;
     }
@@ -410,17 +414,17 @@
       justify-content: space-between;
       margin-bottom: 4px;
       font-weight: 600;
-      color: var(--brand-burgundy-dark);
+      color: var(--burgundy-dark);
     }
 
     .cart-hint {
       font-size: 11px;
-      color: rgba(90, 15, 27, 0.9);
+      color: rgba(90, 15, 27, 0.96);
     }
 
     .empty-cart {
       font-size: 12px;
-      color: rgba(90, 15, 27, 0.9);
+      color: rgba(90, 15, 27, 0.98);
     }
 
     @media (max-width: 400px) {
@@ -537,12 +541,7 @@
     const uiText = {
       ru: {
         headerSubtitle: "Узбекская выпечка из тандыра в Санкт-Петербурге",
-        tabs: {
-          menu: "Меню",
-          about: "О пекарне",
-          contacts: "Контакты",
-          cart: "Корзина",
-        },
+        tabs: { menu: "Меню", about: "О пекарне", contacts: "Контакты", cart: "Корзина" },
         sections: {
           menuTitle: "Меню",
           menuSubtitle: "Выберите изделия и добавьте в корзину",
@@ -551,18 +550,16 @@
           cartTitle: "Ваша корзина",
         },
         about: {
-          t1: "Shirmon Bakery — это семейная пекарня с узбекскими традициями. Мы готовим в тандыре и духовке, используем только свежие продукты и делаем выпечку так, как для своих.",
+          t1: "Shirmon Bakery — это пекарня с узбекскими традициями. Мы готовим в тандыре и духовке, используем только свежие продукты и делаем выпечку так, как для своих.",
           t2: "Вы можете заказать самсу и лепёшки с собой или перекусить на месте. Для постоянных гостей мы постепенно добавим акции и спецпредложения.",
         },
         contacts: {
           addressLabel: "АДРЕС",
           landmarkLabel: "ОРИЕНТИР",
-          landmarkValue:
-            "Рядом с метро «Улица Дыбенко», недалеко от торгового центра.",
+          landmarkValue: "Рядом с метро «Улица Дыбенко», недалеко от торгового центра.",
           phoneLabel: "ТЕЛЕФОН",
           mapTitle: "Карта",
-          mapHint:
-            "Нажмите на ссылку ниже, чтобы открыть карту и проложить маршрут.",
+          mapHint: "Нажмите на ссылку ниже, чтобы открыть карту и проложить маршрут.",
         },
         cart: {
           empty: "Ваша корзина пуста. Добавьте изделия из меню.",
@@ -570,22 +567,12 @@
           hint: "Покажите этот экран продавцу или оформите заказ через Telegram.",
           qty: "шт.",
         },
-        buttons: {
-          addToCart: "В корзину",
-        },
-        units: {
-          weight: "г",
-          currency: "₽",
-        },
+        buttons: { addToCart: "В корзину" },
+        units: { weight: "г", currency: "₽" },
       },
       uz: {
         headerSubtitle: "Sankt-Peterburgdagi tandir o‘zbek pishiriqlari",
-        tabs: {
-          menu: "Menyu",
-          about: "Nonxona",
-          contacts: "Kontaktlar",
-          cart: "Savat",
-        },
+        tabs: { menu: "Menyu", about: "Nonvoyxona", contacts: "Kontaktlar", cart: "Savat" },
         sections: {
           menuTitle: "Menyu",
           menuSubtitle: "Taomlarni tanlang va savatga qo‘shing",
@@ -594,33 +581,25 @@
           cartTitle: "Savat",
         },
         about: {
-          t1: "Shirmon Bakery — oila nonxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy o‘zbek pishiriqlari qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
+          t1: "Shirmon Bakery — oila nonvoyxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy o‘zbek pishiriqlari qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
           t2: "Somsa va nonlarni o‘zingiz bilan olib ketishingiz yoki shu yerning o‘zida tamaddi qilishingiz mumkin. Doimiy mijozlar uchun aksiya va chegirmalar qo‘shamiz.",
         },
         contacts: {
           addressLabel: "MANZIL",
           landmarkLabel: "MO‘LJAL",
-          landmarkValue:
-            "“Ulitsa Dybenko” metro bekati yonida, savdo markaziga yaqin.",
+          landmarkValue: "“Ulitsa Dybenko” metro bekati yonida, savdo markaziga yaqin.",
           phoneLabel: "TELEFON",
           mapTitle: "Xarita",
-          mapHint:
-            "Xaritani ochish va yo‘lni ko‘rish uchun pastdagi havolani bosing.",
+          mapHint: "Xaritani ochish va yo‘lni ko‘rish uchun pastdagi havolani bosing.",
         },
         cart: {
           empty: "Savat bo‘sh. Menyudan taomlarni qo‘shing.",
           totalLabel: "Jami:",
-          hint:
-            "Ushbu oynani sotuvchiga ko‘rsating yoki buyurtmani Telegram orqali yuboring.",
+          hint: "Ushbu oynani sotuvchiga ko‘rsating yoki buyurtmani Telegram orqali yuboring.",
           qty: "dona",
         },
-        buttons: {
-          addToCart: "Savatga",
-        },
-        units: {
-          weight: "g",
-          currency: "₽",
-        },
+        buttons: { addToCart: "Savatga" },
+        units: { weight: "g", currency: "₽" },
       },
     };
 
@@ -652,7 +631,7 @@
         },
         uz: {
           name: "Tandir mol go‘shtli somsa",
-          desc: "Sershov mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan.",
+          desc: "Barra mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan.",
         },
       },
       {
@@ -667,7 +646,7 @@
         },
         uz: {
           name: "Tandir qo‘y go‘shtli somsa",
-          desc: "Yumshoq qo‘y go‘shti, dum yog‘i va piyoz bilan, tandirda haqiqiy sharq ta’mi.",
+          desc: "Yumshoq qo‘y go‘shti, dumba yog‘i va piyoz bilan, tandirda haqiqiy sharq ta’mi.",
         },
       },
       {
@@ -682,7 +661,7 @@
         },
         uz: {
           name: "Mol go‘shtli somsa (duxovkada)",
-          desc: "Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti va piyoz bilan.",
+          desc: "Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti, yog' va piyoz bilan.",
         },
       },
       {
@@ -712,7 +691,7 @@
         },
         uz: {
           name: "Qovoqli somsa",
-          desc: "Yengil shirinroq qovoq ichligi, yumshoq ziravorlar bilan — choy bilan ajoyib.",
+          desc: "Yengil shirin qovoqli, yumshoq, ziravorlari ichida bo'lgan somsa — choy bilan ajoyib.",
         },
       },
       {
@@ -727,7 +706,7 @@
         },
         uz: {
           name: "Tandir mol go‘shtli non",
-          desc: "Rub kesilgan mol go‘shti va piyoz bilan to‘ldirilgan, tandirda pishirilgan non.",
+          desc: "Kesilgan mol go‘shti, piyoz va xushbo'y ziravorlardan iborat, tandirda pishirilgan kulcha non.",
         },
       },
       {
@@ -742,7 +721,7 @@
         },
         uz: {
           name: "Tandir tovuqli non",
-          desc: "Yumshoq tovuq go‘shti ichligi bilan tandirda pishirilgan mazali non.",
+          desc: "Yumshoq tovuq go‘shti bilan tandirda pishirilgan mazali kulcha non.",
         },
       },
       {
@@ -801,12 +780,10 @@
       document.getElementById("header-subtitle").textContent = t.headerSubtitle;
       document.getElementById("tab-label-menu").textContent = t.tabs.menu;
       document.getElementById("tab-label-about").textContent = t.tabs.about;
-      document.getElementById("tab-label-contacts").textContent =
-        t.tabs.contacts;
+      document.getElementById("tab-label-contacts").textContent = t.tabs.contacts;
       document.getElementById("tab-label-cart").textContent = t.tabs.cart;
 
-      document.getElementById("menu-title").textContent =
-        t.sections.menuTitle;
+      document.getElementById("menu-title").textContent = t.sections.menuTitle;
       document.getElementById("menu-subtitle").textContent =
         t.sections.menuSubtitle;
 
@@ -893,18 +870,19 @@
         const qty = cart[id];
         const item = menuItems.find((it) => it.id === id);
         if (!item) return;
+
         const langData = item[currentLang];
         const sum = item.price * qty;
         total += sum;
 
-      const row = document.createElement("div");
-      row.className = "cart-item";
-      row.innerHTML = `
+        const row = document.createElement("div");
+        row.className = "cart-item";
+        row.innerHTML = `
           <div class="cart-item-info">
             <div class="cart-item-name">${langData.name}</div>
             <div class="cart-item-meta">${item.price} ${
-        t.units.currency
-      } × ${qty} ${t.cart.qty}</div>
+          t.units.currency
+        } × ${qty} ${t.cart.qty}</div>
           </div>
           <div class="cart-item-qty">
             <button class="qty-btn" data-id="${item.id}" data-delta="-1">-</button>
@@ -912,6 +890,7 @@
             <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
           </div>
         `;
+        row
         listEl.appendChild(row);
       });
 
@@ -921,9 +900,7 @@
     function updateQty(id, delta) {
       if (!cart[id]) return;
       cart[id] += delta;
-      if (cart[id] <= 0) {
-        delete cart[id];
-      }
+      if (cart[id] <= 0) delete cart[id];
       renderCart();
     }
 
