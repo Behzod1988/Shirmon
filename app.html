@@ -5,7 +5,7 @@
   <title>Shirmon Bakery — Mini App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Красивый шрифт -->
+  <!-- Шрифт -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -14,6 +14,12 @@
   />
 
   <style>
+    :root {
+      --brand-yellow: #f7c933;        /* фон как на лого */
+      --brand-burgundy: #7b1726;      /* бордовый текст */
+      --brand-burgundy-dark: #5a0f1b; /* потемнее для контраста */
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,8 +29,8 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #ffe4c4, #fff7ec 40%, #f5f5f5 100%);
-      color: #222;
+      background: var(--brand-yellow);
+      color: var(--brand-burgundy-dark);
       padding: 12px;
     }
 
@@ -38,13 +44,14 @@
     }
 
     .app-header {
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff9dd;
       border-radius: 18px;
       padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+      border: 1px solid rgba(90, 15, 27, 0.12);
     }
 
     .brand {
@@ -53,31 +60,34 @@
       gap: 10px;
     }
 
-    .logo-dot {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ff9f43, #ff6b6b);
-      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      background: #ffd65f;
     }
 
     .brand-name {
       font-weight: 700;
       font-size: 18px;
       letter-spacing: 0.5px;
+      color: var(--brand-burgundy);
     }
 
     .brand-subtitle {
       font-size: 11px;
-      color: #777;
+      color: rgba(90, 15, 27, 0.75);
     }
 
     .lang-toggle {
       display: flex;
       gap: 6px;
-      background: #f5f5f5;
+      background: #ffe89a;
       border-radius: 999px;
       padding: 3px;
+      border: 1px solid rgba(123, 23, 38, 0.35);
     }
 
     .lang-btn {
@@ -87,11 +97,11 @@
       font-size: 11px;
       border-radius: 999px;
       cursor: pointer;
-      color: #666;
+      color: var(--brand-burgundy-dark);
     }
 
     .lang-btn.active {
-      background: #222;
+      background: var(--brand-burgundy);
       color: #fff;
       font-weight: 600;
     }
@@ -100,10 +110,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff7d1;
       border-radius: 999px;
       padding: 4px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+      border: 1px solid rgba(123, 23, 38, 0.18);
     }
 
     .tab-btn {
@@ -113,23 +124,24 @@
       padding: 6px 4px;
       border-radius: 999px;
       cursor: pointer;
-      color: #777;
+      color: rgba(90, 15, 27, 0.8);
       font-weight: 500;
       white-space: nowrap;
     }
 
     .tab-btn.active {
-      background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+      background: var(--brand-burgundy);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+      box-shadow: 0 4px 12px rgba(90, 15, 27, 0.6);
     }
 
     .tab-container {
       flex: 1;
-      background: rgba(255, 255, 255, 0.96);
+      background: #fffdf0;
       border-radius: 20px;
       padding: 14px 12px 18px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(123, 23, 38, 0.15);
       overflow: hidden;
     }
 
@@ -148,11 +160,12 @@
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 10px;
+      color: var(--brand-burgundy);
     }
 
     .section-subtitle {
       font-size: 12px;
-      color: #888;
+      color: rgba(90, 15, 27, 0.7);
       margin-bottom: 14px;
     }
 
@@ -165,12 +178,13 @@
     }
 
     .card {
-      background: #fff;
+      background: #ffffff;
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(123, 23, 38, 0.12);
     }
 
     .card img {
@@ -190,11 +204,12 @@
     .card-title {
       font-weight: 600;
       font-size: 13px;
+      color: var(--brand-burgundy-dark);
     }
 
     .card-desc {
       font-size: 11px;
-      color: #777;
+      color: rgba(90, 15, 27, 0.75);
       min-height: 28px;
     }
 
@@ -208,13 +223,16 @@
 
     .price {
       font-weight: 600;
+      color: var(--brand-burgundy);
     }
 
     .tag {
       padding: 2px 7px;
       border-radius: 999px;
-      background: #ffe7c2;
+      background: #ffe89a;
       font-size: 10px;
+      color: var(--brand-burgundy-dark);
+      border: 1px solid rgba(123, 23, 38, 0.25);
     }
 
     .add-btn {
@@ -225,29 +243,26 @@
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+      background: linear-gradient(135deg, var(--brand-burgundy-dark), var(--brand-burgundy));
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
+      box-shadow: 0 4px 10px rgba(90, 15, 27, 0.6);
     }
 
     .add-btn:active {
       transform: translateY(1px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 6px rgba(90, 15, 27, 0.7);
     }
 
     /* О пекарне */
     .about-text {
       font-size: 13px;
-      color: #555;
+      color: rgba(90, 15, 27, 0.9);
       margin-bottom: 10px;
       line-height: 1.5;
-    }
-
-    .about-highlight {
-      font-weight: 600;
     }
 
     /* Контакты */
@@ -257,7 +272,7 @@
 
     .contact-label {
       font-size: 11px;
-      color: #888;
+      color: rgba(90, 15, 27, 0.65);
       margin-bottom: 2px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -265,10 +280,11 @@
 
     .contact-value {
       font-size: 13px;
+      color: var(--brand-burgundy-dark);
     }
 
     .contact-value a {
-      color: #ff6b6b;
+      color: var(--brand-burgundy);
       text-decoration: none;
       font-weight: 600;
     }
@@ -281,19 +297,21 @@
       margin-top: 12px;
       padding: 10px;
       border-radius: 14px;
-      background: #f7f3ec;
+      background: #ffe89a;
+      border: 1px solid rgba(123, 23, 38, 0.25);
     }
 
     .map-title {
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 6px;
+      color: var(--brand-burgundy-dark);
     }
 
     .map-placeholder {
       font-size: 11px;
-      color: #666;
-      background: #fff;
+      color: rgba(90, 15, 27, 0.9);
+      background: #fffdf0;
       border-radius: 10px;
       padding: 8px;
       margin-bottom: 6px;
@@ -304,7 +322,7 @@
 
     .map-links a {
       font-size: 11px;
-      color: #ff6b6b;
+      color: var(--brand-burgundy-dark);
       text-decoration: none;
       font-weight: 600;
     }
@@ -326,10 +344,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #fff;
+      background: #ffffff;
       border-radius: 12px;
       padding: 6px 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(123, 23, 38, 0.15);
     }
 
     .cart-item-info {
@@ -342,11 +361,12 @@
     .cart-item-name {
       font-weight: 500;
       font-size: 12px;
+      color: var(--brand-burgundy-dark);
     }
 
     .cart-item-meta {
       font-size: 11px;
-      color: #777;
+      color: rgba(90, 15, 27, 0.75);
     }
 
     .cart-item-qty {
@@ -354,6 +374,7 @@
       align-items: center;
       gap: 4px;
       font-size: 12px;
+      color: var(--brand-burgundy-dark);
     }
 
     .qty-btn {
@@ -361,14 +382,16 @@
       height: 20px;
       border-radius: 999px;
       border: none;
-      background: #f1f1f1;
+      background: #ffe89a;
       cursor: pointer;
       font-size: 14px;
       line-height: 1;
+      color: var(--brand-burgundy-dark);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
     .cart-summary {
-      border-top: 1px solid #eee;
+      border-top: 1px solid rgba(123, 23, 38, 0.18);
       padding-top: 8px;
       font-size: 13px;
     }
@@ -378,16 +401,17 @@
       justify-content: space-between;
       margin-bottom: 4px;
       font-weight: 600;
+      color: var(--brand-burgundy-dark);
     }
 
     .cart-hint {
       font-size: 11px;
-      color: #777;
+      color: rgba(90, 15, 27, 0.75);
     }
 
     .empty-cart {
       font-size: 12px;
-      color: #888;
+      color: rgba(90, 15, 27, 0.7);
     }
 
     @media (max-width: 400px) {
@@ -401,7 +425,7 @@
   <div class="app">
     <header class="app-header">
       <div class="brand">
-        <div class="logo-dot"></div>
+        <img src="images/shirmon-logo.png" alt="Shirmon logo" class="logo-img" />
         <div>
           <div class="brand-name">Shirmon Bakery</div>
           <div class="brand-subtitle" id="header-subtitle"></div>
@@ -548,7 +572,7 @@
         headerSubtitle: "Sankt-Peterburgdagi tandir o‘zbek pishiriqlari",
         tabs: {
           menu: "Menyu",
-          about: "Nonxona",
+          about: "Nonvoyxona",
           contacts: "Kontaktlar",
           cart: "Savat",
         },
@@ -560,7 +584,7 @@
           cartTitle: "Savat",
         },
         about: {
-          t1: "Shirmon Bakery — oila nonxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy o‘zbek pishiriqlari qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
+          t1: "Shirmon Bakery — Nonvoyxona va somsaxona bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy o‘zbek pishiriqlari tayyorlanadi. Faqat yangi mahsulotlardan foydalanamiz.",
           t2: "Somsa va nonlarni o‘zingiz bilan olib ketishingiz yoki shu yerning o‘zida tamaddi qilishingiz mumkin. Doimiy mijozlar uchun aksiya va chegirmalar qo‘shamiz.",
         },
         contacts: {
@@ -570,7 +594,8 @@
             "“Ulitsa Dybenko” metro bekati yonida, savdo markaziga yaqin.",
           phoneLabel: "TELEFON",
           mapTitle: "Xarita",
-          mapHint: "Xaritani ochish va yo‘lni ko‘rish uchun pastdagi havolani bosing.",
+          mapHint:
+            "Xaritani ochish va yo‘lni ko‘rish uchun pastdagi havolani bosing.",
         },
         cart: {
           empty: "Savat bo‘sh. Menyudan taomlarni qo‘shing.",
@@ -617,7 +642,7 @@
         },
         uz: {
           name: "Tandir mol go‘shtli somsa",
-          desc: "Sershov mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan.",
+          desc: "Barra mol go‘shti, piyoz va ziravorlar tandirda qarsildoq qobiqgacha pishirilgan.",
         },
       },
       {
@@ -632,7 +657,7 @@
         },
         uz: {
           name: "Tandir qo‘y go‘shtli somsa",
-          desc: "Yumshoq qo‘y go‘shti, dum yog‘i va piyoz bilan, tandirda haqiqiy sharq ta’mi.",
+          desc: "Yumshoq qo‘y go‘shti, dumba yog‘i, piyoz va ziravorlar bilan, tandirda haqiqiy sharq ta’mi.",
         },
       },
       {
@@ -647,7 +672,7 @@
         },
         uz: {
           name: "Mol go‘shtli somsa (duxovkada)",
-          desc: "Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti va piyoz bilan.",
+          desc: "Duxovkada pishirilgan uchburchak somsa, mazali mol go‘shti, yog', piyoz va ziravorlar bilan.",
         },
       },
       {
@@ -677,7 +702,7 @@
         },
         uz: {
           name: "Qovoqli somsa",
-          desc: "Yengil shirinroq qovoq ichligi, yumshoq ziravorlar bilan — choy bilan ajoyib.",
+          desc: "Yengil shirinroq qovoqli, yumshoq ziravorlar bilan — choy bilan ajoyib.",
         },
       },
       {
@@ -692,7 +717,7 @@
         },
         uz: {
           name: "Tandir mol go‘shtli non",
-          desc: "Rub kesilgan mol go‘shti va piyoz bilan to‘ldirilgan, tandirda pishirilgan non.",
+          desc: "Kesilgan mol go‘shti, yo'g', piyoz va ziravorlardan iborat tandirda pishirilgan non.",
         },
       },
       {
@@ -707,7 +732,7 @@
         },
         uz: {
           name: "Tandir tovuqli non",
-          desc: "Yumshoq tovuq go‘shti ichligi bilan tandirda pishirilgan mazali non.",
+          desc: "Yumshoq tovuq go‘shti bilan tandirda pishirilgan mazali non.",
         },
       },
       {
@@ -828,13 +853,6 @@
         `;
         container.appendChild(card);
       });
-
-      container.addEventListener("click", (e) => {
-        const btn = e.target.closest(".add-btn");
-        if (!btn) return;
-        const id = parseInt(btn.getAttribute("data-id"), 10);
-        addToCart(id);
-      }, { once: true });
     }
 
     function addToCart(id) {
@@ -887,14 +905,6 @@
         listEl.appendChild(row);
       });
 
-      listEl.addEventListener("click", (e) => {
-        const btn = e.target.closest(".qty-btn");
-        if (!btn) return;
-        const id = parseInt(btn.getAttribute("data-id"), 10);
-        const delta = parseInt(btn.getAttribute("data-delta"), 10);
-        updateQty(id, delta);
-      }, { once: true });
-
       totalEl.textContent = `${total} ${t.units.currency}`;
     }
 
@@ -936,9 +946,32 @@
       });
     }
 
+    function setupMenuClicks() {
+      const container = document.getElementById("menu-list");
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".add-btn");
+        if (!btn) return;
+        const id = parseInt(btn.getAttribute("data-id"), 10);
+        addToCart(id);
+      });
+    }
+
+    function setupCartClicks() {
+      const listEl = document.getElementById("cart-list");
+      listEl.addEventListener("click", (e) => {
+        const btn = e.target.closest(".qty-btn");
+        if (!btn) return;
+        const id = parseInt(btn.getAttribute("data-id"), 10);
+        const delta = parseInt(btn.getAttribute("data-delta"), 10);
+        updateQty(id, delta);
+      });
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       setupTabs();
       setupLangButtons();
+      setupMenuClicks();
+      setupCartClicks();
       applyTranslations();
     });
   </script>
