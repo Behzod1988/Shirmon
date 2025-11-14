@@ -17,7 +17,7 @@
     :root {
       /* Жёлтый как в лого */
       --yellow-main: #f7c933;
-      /* Чуть более тёмный жёлтый, если нужен */
+      /* Чуть более тёмный жёлтый */
       --yellow-accent: #f4b816;
 
       --yellow-light: var(--yellow-main);
@@ -482,6 +482,89 @@
       font-weight: 500;
     }
 
+    /* Кнопка "Очистить корзину" */
+    .cart-actions {
+      margin-top: 8px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .clear-cart-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(123, 23, 38, 0.6);
+      background: transparent;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--burgundy-dark);
+      cursor: pointer;
+    }
+
+    .clear-cart-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Блок оплаты */
+    .payment-block {
+      margin-top: 12px;
+      padding: 10px 10px 12px;
+      border-radius: 14px;
+      background: var(--yellow-accent);
+      border: 1px solid rgba(123, 23, 38, 0.45);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .payment-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      margin-bottom: 4px;
+    }
+
+    .payment-hint {
+      font-size: 12px;
+      color: rgba(90, 15, 27, 0.95);
+      margin-bottom: 8px;
+    }
+
+    .payment-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .payment-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(90, 15, 27, 0.9);
+      font-weight: 700;
+    }
+
+    .payment-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+    }
+
+    .payment-qr-block {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+
+    .payment-qr {
+      margin-top: 4px;
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(123, 23, 38, 0.4);
+      background: #ffffff;
+    }
+
     @media (max-width: 400px) {
       .grid {
         grid-template-columns: 1fr;
@@ -578,12 +661,32 @@
       <section id="tab-cart" class="tab-content">
         <div class="section-title" id="cart-title"></div>
         <div id="cart-list" class="cart-list"></div>
+
         <div class="cart-summary">
           <div class="cart-total">
             <span id="cart-total-label"></span>
             <span id="cart-total-value">0 ₽</span>
           </div>
           <div class="cart-hint" id="cart-hint"></div>
+        </div>
+
+        <div class="cart-actions">
+          <button id="clear-cart-btn" class="clear-cart-btn"></button>
+        </div>
+
+        <div class="payment-block">
+          <div class="payment-title" id="pay-title"></div>
+          <div class="payment-hint" id="pay-hint"></div>
+
+          <div class="payment-details">
+            <div class="payment-label" id="pay-phone-label"></div>
+            <div class="payment-value">+7 (961) 805-81-59</div>
+          </div>
+
+          <div class="payment-qr-block">
+            <div class="payment-label" id="pay-qr-label"></div>
+            <img src="images/qr-shirmon.png" alt="QR для перевода" class="payment-qr" />
+          </div>
         </div>
       </section>
     </main>
@@ -621,6 +724,11 @@
           totalLabel: "Итого:",
           hint: "Покажите этот экран продавцу или оформите заказ через Telegram.",
           qty: "шт.",
+          payTitle: "Оплата переводом",
+          payHint: "Переведите сумму из корзины на номер телефона ниже через ваш банк или отсканируйте QR-код.",
+          payPhoneLabel: "Номер для перевода",
+          qrLabel: "QR для перевода",
+          clearBtn: "Очистить корзину",
         },
         buttons: { addToCart: "В корзину" },
         units: { weight: "г", currency: "₽" },
@@ -637,7 +745,7 @@
         },
         about: {
           t1: "Shirmon Bakery — oila nonvoyxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy o‘zbek pishiriqlari qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
-          t2: "Somsa va nonlarni o‘zingiz bilan olib ketishingiz yoki shu yerning o‘zida tamaddi qilishingiz mumkin. Doimiy mijozlar uchun aksiya va chegirmalar qo‘шamiz.",
+          t2: "Somsa va nonlarni o‘zingiz bilan olib ketishingiz yoki shu yerning o‘zida tamaddi qilishingiz mumkin. Doimiy mijozlar uchun aksiya va chegirmalar qo‘shamiz.",
         },
         contacts: {
           addressLabel: "MANZIL",
@@ -648,10 +756,15 @@
           mapHint: "Xaritani ochish va yo‘lni ko‘rish uchun pastdagi havolani bosing.",
         },
         cart: {
-          empty: "Savat bo‘sh. Menyudan taomlarni qo‘шing.",
+          empty: "Savat bo‘sh. Menyudan taomlarni qo‘shing.",
           totalLabel: "Jami:",
-          hint: "Ushbu oynani sotuvchiga ko‘rsatинг yoki buyurtmani Telegram orqali yuboring.",
+          hint: "Ushbu oynani sotuvchiga ko‘rsating yoki buyurtmani Telegram orqali yuboring.",
           qty: "dona",
+          payTitle: "To‘lov o‘tkazma bilan",
+          payHint: "Savatdagi summani quyidagi telefon raqamiga bank orqali o‘tkazing yoki QR-kodni skaner qiling.",
+          payPhoneLabel: "O‘tkazma raqami",
+          qrLabel: "To‘lov uchun QR",
+          clearBtn: "Savatni tozalash",
         },
         buttons: { addToCart: "Savatga" },
         units: { weight: "g", currency: "₽" },
@@ -866,6 +979,13 @@
         t.cart.totalLabel;
       document.getElementById("cart-hint").textContent = t.cart.hint;
 
+      document.getElementById("pay-title").textContent = t.cart.payTitle;
+      document.getElementById("pay-hint").textContent = t.cart.payHint;
+      document.getElementById("pay-phone-label").textContent = t.cart.payPhoneLabel;
+      document.getElementById("pay-qr-label").textContent = t.cart.qrLabel;
+
+      document.getElementById("clear-cart-btn").textContent = t.cart.clearBtn;
+
       renderMenu();
       renderCart();
     }
@@ -935,9 +1055,7 @@
         row.innerHTML = `
           <div class="cart-item-info">
             <div class="cart-item-name">${langData.name}</div>
-            <div class="cart-item-meta">${item.price} ${
-          t.units.currency
-        } × ${qty} ${t.cart.qty}</div>
+            <div class="cart-item-meta">${item.price} ${t.units.currency} × ${qty} ${t.cart.qty}</div>
           </div>
           <div class="cart-item-qty">
             <button class="qty-btn" data-id="${item.id}" data-delta="-1">-</button>
@@ -955,6 +1073,15 @@
       if (!cart[id]) return;
       cart[id] += delta;
       if (cart[id] <= 0) delete cart[id];
+      renderCart();
+    }
+
+    function clearCart() {
+      for (const key in cart) {
+        if (Object.prototype.hasOwnProperty.call(cart, key)) {
+          delete cart[key];
+        }
+      }
       renderCart();
     }
 
@@ -1008,11 +1135,18 @@
       });
     }
 
+    function setupClearCartButton() {
+      const btn = document.getElementById("clear-cart-btn");
+      if (!btn) return;
+      btn.addEventListener("click", clearCart);
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       setupTabs();
       setupLangButtons();
       setupMenuClicks();
       setupCartClicks();
+      setupClearCartButton();
       applyTranslations();
     });
   </script>
