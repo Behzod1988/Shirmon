@@ -35,16 +35,18 @@
       padding: 0;
     }
 
-    /* ВНЕШНИЙ ФОН — СЕРЫЙ */
+    /* ВНЕШНИЙ ФОН — ТОЖЕ ЖЁЛТЫЙ */
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: #d4d4d4;
+      background: linear-gradient(135deg, var(--yellow-main), var(--yellow-accent));
       color: var(--burgundy-dark);
       padding: 12px;
+      font-size: 15px;
+      line-height: 1.4;
     }
 
-    /* ВНУТРЕННИЙ БЛОК — СПЛОШНО ЖЁЛТЫЙ */
+    /* ВНУТРЕННЯЯ КАРТОЧКА ПРИЛОЖЕНИЯ */
     .app {
       max-width: 520px;
       margin: 0 auto;
@@ -54,15 +56,15 @@
       gap: 10px;
       background: var(--yellow-main);
       border-radius: 24px;
-      padding: 12px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 14px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      border: 2px solid rgba(255, 255, 255, 0.35);
     }
 
     .app-header {
       background: var(--yellow-main);
       border-radius: 18px;
-      padding: 12px 16px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -78,8 +80,8 @@
 
     /* ЛОГО: файл images/shirmon-logo.png */
     .logo-img {
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       object-fit: cover;
       background: var(--yellow-accent);
@@ -88,14 +90,15 @@
 
     .brand-name {
       font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 0.5px;
+      font-size: 20px;
+      letter-spacing: 0.6px;
       color: var(--burgundy);
     }
 
     .brand-subtitle {
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(90, 15, 27, 0.9);
+      font-weight: 500;
     }
 
     .lang-toggle {
@@ -103,24 +106,25 @@
       gap: 6px;
       background: var(--yellow-main);
       border-radius: 999px;
-      padding: 3px;
+      padding: 4px;
       border: 1px solid rgba(123, 23, 38, 0.4);
     }
 
     .lang-btn {
       border: none;
       background: transparent;
-      padding: 4px 9px;
-      font-size: 11px;
+      padding: 5px 10px;
+      font-size: 12px;
       border-radius: 999px;
       cursor: pointer;
       color: var(--burgundy-dark);
+      font-weight: 600;
     }
 
     .lang-btn.active {
       background: var(--burgundy);
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .tabs {
@@ -129,7 +133,7 @@
       gap: 6px;
       background: var(--yellow-main);
       border-radius: 999px;
-      padding: 4px;
+      padding: 5px;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(123, 23, 38, 0.35);
     }
@@ -137,12 +141,12 @@
     .tab-btn {
       border: none;
       background: transparent;
-      font-size: 12px;
-      padding: 6px 4px;
+      font-size: 13px;
+      padding: 7px 4px;
       border-radius: 999px;
       cursor: pointer;
       color: rgba(90, 15, 27, 0.95);
-      font-weight: 500;
+      font-weight: 600;
       white-space: nowrap;
     }
 
@@ -156,7 +160,7 @@
       flex: 1;
       background: var(--yellow-main);
       border-radius: 20px;
-      padding: 14px 12px 18px;
+      padding: 16px 12px 20px;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(123, 23, 38, 0.4);
       overflow: hidden;
@@ -174,16 +178,17 @@
     }
 
     .section-title {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 10px;
       color: var(--burgundy);
     }
 
     .section-subtitle {
-      font-size: 12px;
+      font-size: 13px;
       color: rgba(90, 15, 27, 0.95);
       margin-bottom: 14px;
+      font-weight: 500;
     }
 
     /* МЕНЮ */
@@ -206,40 +211,42 @@
 
     .card img {
       width: 100%;
-      height: 120px;
+      height: 124px;
       object-fit: cover;
       display: block;
     }
 
     .card-body {
-      padding: 8px 10px 10px;
+      padding: 9px 11px 11px;
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
 
     .card-title {
-      font-weight: 600;
-      font-size: 13px;
+      font-weight: 700;
+      font-size: 14px;
       color: var(--burgundy-dark);
     }
 
     .card-desc {
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(90, 15, 27, 0.95);
-      min-height: 28px;
+      min-height: 30px;
+      font-weight: 500;
     }
 
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
+      font-size: 12px;
       margin-top: 4px;
+      font-weight: 600;
     }
 
     .price {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--burgundy);
     }
 
@@ -247,18 +254,19 @@
       padding: 2px 7px;
       border-radius: 999px;
       background: var(--yellow-main);
-      font-size: 10px;
+      font-size: 11px;
       color: var(--burgundy-dark);
       border: 1px solid rgba(123, 23, 38, 0.4);
+      font-weight: 600;
     }
 
     .add-btn {
       margin-top: 6px;
       border: none;
       border-radius: 999px;
-      padding: 6px 8px;
-      font-size: 11px;
-      font-weight: 600;
+      padding: 7px 8px;
+      font-size: 12px;
+      font-weight: 700;
       cursor: pointer;
       background: linear-gradient(135deg, var(--burgundy-dark), var(--burgundy));
       color: #ffffff;
@@ -276,10 +284,11 @@
 
     /* О ПЕКАРНЕ */
     .about-text {
-      font-size: 13px;
+      font-size: 14px;
       color: rgba(90, 15, 27, 0.98);
       margin-bottom: 10px;
-      line-height: 1.5;
+      line-height: 1.6;
+      font-weight: 500;
     }
 
     /* КОНТАКТЫ */
@@ -288,22 +297,24 @@
     }
 
     .contact-label {
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(90, 15, 27, 0.95);
       margin-bottom: 2px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      font-weight: 700;
     }
 
     .contact-value {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--burgundy-dark);
+      font-weight: 500;
     }
 
     .contact-value a {
       color: var(--burgundy);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .contact-value a:hover {
@@ -319,14 +330,14 @@
     }
 
     .map-title {
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       margin-bottom: 6px;
       color: var(--burgundy-dark);
     }
 
     .map-placeholder {
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(90, 15, 27, 0.98);
       background: var(--yellow-main);
       border-radius: 10px;
@@ -335,13 +346,14 @@
       display: flex;
       gap: 6px;
       align-items: center;
+      font-weight: 500;
     }
 
     .map-links a {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--burgundy-dark);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .map-links a:hover {
@@ -363,7 +375,7 @@
       align-items: center;
       background: var(--yellow-accent);
       border-radius: 12px;
-      padding: 6px 8px;
+      padding: 7px 9px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(123, 23, 38, 0.45);
     }
@@ -376,14 +388,15 @@
     }
 
     .cart-item-name {
-      font-weight: 500;
-      font-size: 12px;
+      font-weight: 600;
+      font-size: 13px;
       color: var(--burgundy-dark);
     }
 
     .cart-item-meta {
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(90, 15, 27, 0.95);
+      font-weight: 500;
     }
 
     .cart-item-qty {
@@ -392,19 +405,21 @@
       gap: 4px;
       font-size: 12px;
       color: var(--burgundy-dark);
+      font-weight: 600;
     }
 
     .qty-btn {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 999px;
       border: none;
       background: var(--yellow-main);
       cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1;
       color: var(--burgundy-dark);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      font-weight: 700;
     }
 
     .cart-summary {
@@ -417,23 +432,30 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 4px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--burgundy-dark);
+      font-size: 14px;
     }
 
     .cart-hint {
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(90, 15, 27, 0.96);
+      font-weight: 500;
     }
 
     .empty-cart {
-      font-size: 12px;
+      font-size: 13px;
       color: rgba(90, 15, 27, 0.98);
+      font-weight: 500;
     }
 
     @media (max-width: 400px) {
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .brand-name {
+        font-size: 18px;
       }
     }
   </style>
