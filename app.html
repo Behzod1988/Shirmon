@@ -15,9 +15,9 @@
 
   <style>
     :root {
-      /* 1-й жёлтый — основной фон */
+      /* 1-й жёлтый — основной */
       --yellow-main: #f7c933;
-      /* 2-й жёлтый — акцент (чуть глубже, как в лого) */
+      /* 2-й жёлтый — более тёмный, как в лого */
       --yellow-accent: #f4b816;
 
       --yellow-light: var(--yellow-main);
@@ -45,7 +45,7 @@
       line-height: 1.45;
     }
 
-    /* ВНУТРЕННЯЯ КАРТОЧКА ПРИЛОЖЕНИЯ */
+    /* ВНУТРЕННЯЯ КАРТОЧКА ПРИЛОЖЕНИЯ — ТЁМНО-ЖЁЛТАЯ */
     .app {
       max-width: 520px;
       margin: 0 auto;
@@ -53,7 +53,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: var(--yellow-main);
+      background: var(--yellow-accent); /* стало темнее */
       border-radius: 24px;
       padding: 14px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
@@ -68,7 +68,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      flex-wrap: wrap; /* чтобы всё аккуратно вмещалось */
+      flex-wrap: wrap;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(90, 15, 27, 0.35);
     }
@@ -78,10 +78,9 @@
       align-items: center;
       gap: 10px;
       flex: 1;
-      min-width: 0; /* позволяет тексту красиво переноситься */
+      min-width: 0;
     }
 
-    /* ЛОГО: файл images/shirmon-logo.png */
     .logo-img {
       width: 46px;
       height: 46px;
@@ -143,7 +142,6 @@
       font-weight: 700;
     }
 
-    /* На очень узких экранах языки уходят чуть ниже — всё остаётся аккуратным */
     @media (max-width: 420px) {
       .app-header {
         flex-direction: column;
@@ -186,9 +184,10 @@
       box-shadow: 0 4px 12px rgba(90, 15, 27, 0.7);
     }
 
+    /* ОСНОВНАЯ РАБОЧАЯ ОБЛАСТЬ — ТОЖЕ ТЁМНО-ЖЁЛТАЯ */
     .tab-container {
       flex: 1;
-      background: var(--yellow-main);
+      background: var(--yellow-accent); /* стало темнее */
       border-radius: 20px;
       padding: 16px 12px 20px;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
@@ -230,8 +229,9 @@
       padding-bottom: 10px;
     }
 
+    /* Карточки — чуть светлее, чтобы выделялись на тёмно-жёлтом фоне */
     .card {
-      background: var(--yellow-accent);
+      background: var(--yellow-main);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
@@ -313,7 +313,6 @@
       box-shadow: 0 2px 6px rgba(90, 15, 27, 0.9);
     }
 
-    /* О ПЕКАРНЕ */
     .about-text {
       font-size: 14px;
       color: rgba(90, 15, 27, 0.98);
@@ -322,7 +321,6 @@
       font-weight: 500;
     }
 
-    /* КОНТАКТЫ */
     .contact-item {
       margin-bottom: 10px;
     }
@@ -356,7 +354,7 @@
       margin-top: 12px;
       padding: 10px;
       border-radius: 14px;
-      background: var(--yellow-accent);
+      background: var(--yellow-main);
       border: 1px solid rgba(123, 23, 38, 0.5);
     }
 
@@ -370,7 +368,7 @@
     .map-placeholder {
       font-size: 12px;
       color: rgba(90, 15, 27, 0.98);
-      background: var(--yellow-main);
+      background: var(--yellow-accent);
       border-radius: 10px;
       padding: 8px;
       margin-bottom: 6px;
@@ -391,7 +389,6 @@
       text-decoration: underline;
     }
 
-    /* КОРЗИНА */
     .cart-list {
       display: flex;
       flex-direction: column;
@@ -404,7 +401,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--yellow-accent);
+      background: var(--yellow-main);
       border-radius: 12px;
       padding: 7px 9px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -519,21 +516,18 @@
     </nav>
 
     <main class="tab-container">
-      <!-- Меню -->
       <section id="tab-menu" class="tab-content active">
         <div class="section-title" id="menu-title"></div>
         <div class="section-subtitle" id="menu-subtitle"></div>
         <div id="menu-list" class="grid"></div>
       </section>
 
-      <!-- О пекарне -->
       <section id="tab-about" class="tab-content">
         <div class="section-title" id="about-title"></div>
         <p class="about-text" id="about-text-1"></p>
         <p class="about-text" id="about-text-2"></p>
       </section>
 
-      <!-- Контакты -->
       <section id="tab-contacts" class="tab-content">
         <div class="section-title" id="contacts-title"></div>
 
@@ -572,7 +566,6 @@
         </div>
       </section>
 
-      <!-- Корзина -->
       <section id="tab-cart" class="tab-content">
         <div class="section-title" id="cart-title"></div>
         <div id="cart-list" class="cart-list"></div>
@@ -634,7 +627,7 @@
           cartTitle: "Savat",
         },
         about: {
-          t1: "Shirmon Bakery — O'zbek nonvoyxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy milliy pishiriqlari qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
+          t1: "Shirmon Bakery — O'zbek nonvoyxonasi bo‘lib, bu yerda tandir va duxovkada tayyorlangan haqiqiy milliy pishiriqlar qilinadi. Faqat yangi mahsulotlardan foydalanamiz.",
           t2: "Somsa va nonlarni o‘zingiz bilan olib ketishingiz yoki shu yerning o‘zida tamaddi qilishingiz mumkin. Doimiy mijozlar uchun aksiya va chegirmalar qo‘shamiz.",
         },
         contacts: {
@@ -804,7 +797,7 @@
         },
         uz: {
           name: "Xamirli sosiska",
-          desc: "Tilladay qizarib pishgan xamir ichida shirali sosiska — bolalar sevimlisi.",
+          desc: "Tilladay qizarib пishgan xamir ichida shirali sosiska — bolalar sevimlisi.",
         },
       },
       {
