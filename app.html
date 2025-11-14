@@ -15,11 +15,15 @@
 
   <style>
     :root {
-      /* оттенки жёлтого как в лого */
+      /* 1-й жёлтый — основной фон */
       --yellow-main: #f7c933;
-      --yellow-light: #ffe58a;
-      --yellow-soft: #fff0a6;
-      --yellow-deep: #f4b816;
+      /* 2-й жёлтый — акцент (чуть глубже, как в лого) */
+      --yellow-accent: #f4b816;
+
+      /* чтобы не ломать старые переменные — делаем их теми же двумя цветами */
+      --yellow-light: var(--yellow-main);
+      --yellow-soft: var(--yellow-main);
+      --yellow-deep: var(--yellow-accent);
 
       --burgundy: #7b1726;
       --burgundy-dark: #5a0f1b;
@@ -40,7 +44,7 @@
       padding: 12px;
     }
 
-    /* ВНУТРЕННИЙ БЛОК — ЖЁЛТЫЙ */
+    /* ВНУТРЕННИЙ БЛОК — СПЛОШНО ЖЁЛТЫЙ */
     .app {
       max-width: 520px;
       margin: 0 auto;
@@ -56,7 +60,7 @@
     }
 
     .app-header {
-      background: var(--yellow-soft);
+      background: var(--yellow-main);
       border-radius: 18px;
       padding: 12px 16px;
       display: flex;
@@ -78,7 +82,7 @@
       height: 42px;
       border-radius: 50%;
       object-fit: cover;
-      background: var(--yellow-deep);
+      background: var(--yellow-accent);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
@@ -97,7 +101,7 @@
     .lang-toggle {
       display: flex;
       gap: 6px;
-      background: var(--yellow-light);
+      background: var(--yellow-main);
       border-radius: 999px;
       padding: 3px;
       border: 1px solid rgba(123, 23, 38, 0.4);
@@ -123,7 +127,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
-      background: var(--yellow-soft);
+      background: var(--yellow-main);
       border-radius: 999px;
       padding: 4px;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
@@ -150,7 +154,7 @@
 
     .tab-container {
       flex: 1;
-      background: var(--yellow-soft);
+      background: var(--yellow-main);
       border-radius: 20px;
       padding: 14px 12px 18px;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
@@ -191,7 +195,7 @@
     }
 
     .card {
-      background: var(--yellow-light);
+      background: var(--yellow-accent);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
@@ -242,7 +246,7 @@
     .tag {
       padding: 2px 7px;
       border-radius: 999px;
-      background: var(--yellow-soft);
+      background: var(--yellow-main);
       font-size: 10px;
       color: var(--burgundy-dark);
       border: 1px solid rgba(123, 23, 38, 0.4);
@@ -310,7 +314,7 @@
       margin-top: 12px;
       padding: 10px;
       border-radius: 14px;
-      background: var(--yellow-light);
+      background: var(--yellow-accent);
       border: 1px solid rgba(123, 23, 38, 0.5);
     }
 
@@ -324,7 +328,7 @@
     .map-placeholder {
       font-size: 11px;
       color: rgba(90, 15, 27, 0.98);
-      background: var(--yellow-soft);
+      background: var(--yellow-main);
       border-radius: 10px;
       padding: 8px;
       margin-bottom: 6px;
@@ -357,7 +361,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--yellow-light);
+      background: var(--yellow-accent);
       border-radius: 12px;
       padding: 6px 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -395,7 +399,7 @@
       height: 20px;
       border-radius: 999px;
       border: none;
-      background: var(--yellow-soft);
+      background: var(--yellow-main);
       cursor: pointer;
       font-size: 14px;
       line-height: 1;
@@ -890,7 +894,6 @@
             <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
           </div>
         `;
-        row
         listEl.appendChild(row);
       });
 
